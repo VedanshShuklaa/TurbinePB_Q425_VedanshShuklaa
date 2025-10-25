@@ -2,14 +2,19 @@ use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
 
+//Simple program where you can use Binary Search to guess the number in just a few guesses
+
 fn main() {
-    println!("Guess the Number!");
+    println!("Guess the Number in 7 guesses! (The number lies between 1 and 100)");
 
     let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
-    println!("The secret number is {secret_number}");
+
+    let mut guess_count = 0;
 
     loop {
-        println!("Please input your guess:");
+        guess_count += 1;
+        if guess_count == 7 { break; }
+        println!("Please input guess {guess_count}:");
 
         let mut guess = String::new();
 
